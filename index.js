@@ -20,7 +20,7 @@ app.use(
 
 app.get('/api/persons', (req, res) => {
     Person.find({}).then(persons=>{
-        res.join(persons)
+        res.json(persons)
     })
     
 })
@@ -54,20 +54,21 @@ app.delete('/api/persons/:id', (req, res) => {
 
 app.post('/api/persons', (req, res) => {
     const body = req.body;
+    console.log('body',body)
 
-    if(body.content===undefined) {
+    if(body===undefined) {
         return res.status(400).json({
             error: 'content missing'
         });
     }
 
-    if (!body.name) {
+    if (body.name===undefined) {
         return res.status(400).json({
             error: 'name is required'
         });
     }
 
-    if (!body.number) {
+    if (body.number===undefined) {
         return res.status(400).json({
             error: 'number is required'
         });

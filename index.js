@@ -6,8 +6,8 @@ app.use(express.static('dist'))
 app.use(express.json());
 var morgan=require('morgan')
 // //for crosss site 
-// const cors = require('cors')
-// app.use(cors())//allow all//** */
+const cors = require('cors')
+app.use(cors())//allow all//** */
 
 morgan.token("data", (request) => {
     return request.method === "POST" ? JSON.stringify(request.body) : " ";

@@ -1,44 +1,46 @@
-const mongoose = require('mongoose')
+// //this is no longer will be used as we are using the backend server to handle the database
 
-if (process.argv.length<3) {
-  console.log('give password as argument')
-  process.exit(1)
-}
+// const mongoose = require('mongoose')
 
-const password = process.argv[2]
-const name=process.argv[3]
-const number=process.argv[4]
+// if (process.argv.length<3) {
+//   console.log('give password as argument')
+//   process.exit(1)
+// }
 
-const url =`mongodb+srv://startupver001:${password}@cluster0.y4ukach.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+// const password = process.argv[2]
+// const name=process.argv[3]
+// const number=process.argv[4]
 
-mongoose.set('strictQuery',false)
+// const url =`mongodb+srv://startupver001:${password}@cluster0.y4ukach.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
-mongoose.connect(url)
+// mongoose.set('strictQuery',false)
 
-const PersonSchema = new mongoose.Schema({
-  name: String,
-  number: String,
-})
+// mongoose.connect(url)
 
-const Person = mongoose.model('Person_', PersonSchema)
+// const PersonSchema = new mongoose.Schema({
+//   name: String,
+//   number: String,
+// })
 
-if (process.argv.length<4) {
-  Person.find({}).then(result => {
-    console.log('phonebook:')
-    result.forEach(person => {
-      console.log(`${person.name} ${person.number}`)
-    })
-    mongoose.connection.close()
-  })
-  return
-}
+// const Person = mongoose.model('Person_', PersonSchema)
 
-const person_individiual = new Person({
-    name: name,
-    number: number,
-})
+// if (process.argv.length<4) {
+//   Person.find({}).then(result => {
+//     console.log('phonebook:')
+//     result.forEach(person => {
+//       console.log(`${person.name} ${person.number}`)
+//     })
+//     mongoose.connection.close()
+//   })
+//   return
+// }
 
-person_individiual.save().then(result => {
-  console.log(`added ${name} number ${number} to phonebook`)
-  mongoose.connection.close()
-})
+// const person_individiual = new Person({
+//     name: name,
+//     number: number,
+// })
+
+// person_individiual.save().then(result => {
+//   console.log(`added ${name} number ${number} to phonebook`)
+//   mongoose.connection.close()
+// })
